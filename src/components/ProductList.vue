@@ -4,6 +4,7 @@
     import { useRoute, useRouter } from 'vue-router';
     import ProductLoader from './shared/ProductLoader.vue';
     import RenderPagination from './shared/RenderPagination.vue';
+    import SortOrder from './shared/SortOrder.vue';
     import TableRow from './shared/TableRow.vue';
 
     // router and route
@@ -14,19 +15,21 @@
     const { productList, isLoading, fetchProducts, totalProducts } = useProducts();
 
     // pagination par page and current page
-    const parPage = ref(5);
+    const parPage = ref(20);
     const page = !isNaN(route.query.page) ? Number(route.query.page) : 1;
     const currentPage = ref(page);
     // skipped items for pagination
     const skipped = computed(() => (currentPage.value - 1) * parPage.value);
+
+    // sort order
+    const sortOrder = ref('asc');
 
     // fetch data on mounted
     fetchProducts(skipped.value, parPage.value);
 
     // watch currentPage and fetch data again
     watch(currentPage, () => {
-        const skip = (currentPage.value - 1) * parPage.value;
-        fetchProducts(skip);
+        fetchProducts(skipped.value);
     });
 
     // total page for pagination
@@ -37,9 +40,20 @@
         currentPage.value = page;
         router.push({ query: { page } });
     };
+    const sortedProductList = computed(() => {
+        const products = [...productList.value];
+        return products.sort((a, b) => {
+            if (sortOrder.value === 'asc') {
+                return a.price - b.price;
+            } else {
+                return b.price - a.price;
+            }
+        });
+    });
 </script>
 
 <template>
+    <SortOrder @update:sort="value => (sortOrder = value)" />
     <table class="relative w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs uppercase">
             <tr>
@@ -60,8 +74,8 @@
                 </tr>
             </template>
             <template v-else>
-                <TableRow
-                    v-for="(product, index) in productList"
+                <table-row
+                    v-for="(product, index) in sortedProductList"
                     :key="product.id"
                     :iteration="index"
                     :skipped="skipped"
