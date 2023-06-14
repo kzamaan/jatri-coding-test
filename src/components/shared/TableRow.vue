@@ -1,0 +1,57 @@
+<script setup>
+    import { useProducts } from '@/composable/useProducts';
+    import { ref, watch } from 'vue';
+    import PrimaryButton from './PrimaryButton.vue';
+    import ProductDetail from './ProductDetail.vue';
+
+    const { fetchProductById, productDetail, isLoading } = useProducts();
+
+    const props = defineProps({
+        product: {
+            type: Object,
+            default: () => ({}),
+        },
+        skipped: {
+            type: Number,
+            default: 0,
+        },
+        iteration: {
+            type: Number,
+            default: 0,
+        },
+    });
+
+    watch(productDetail, value => {
+        console.log('Product detail', value);
+    });
+
+    const isShowDetail = ref(false);
+
+    const showProductDetail = () => {
+        isShowDetail.value = !isShowDetail.value;
+        if (isShowDetail.value) {
+            fetchProductById(null);
+        } else {
+            fetchProductById(props.product.id);
+        }
+    };
+</script>
+
+<template>
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ skipped + (iteration + 1) }}
+        </th>
+        <td class="px-6 py-4">{{ product.title }}</td>
+        <td class="px-6 py-4">{{ product.rating }}</td>
+        <td class="px-6 py-4 text-right">{{ product.price }}</td>
+        <td class="px-6 py-4 text-center">
+            <PrimaryButton @click="showProductDetail">
+                {{ isShowDetail ? 'Hide' : 'Show' }}
+            </PrimaryButton>
+        </td>
+    </tr>
+    <template v-if="isShowDetail">
+        <ProductDetail :product-detail="productDetail" :is-loading="isLoading" />
+    </template>
+</template>

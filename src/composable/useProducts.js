@@ -11,6 +11,7 @@ export const useProducts = () => {
     const productList = ref([]);
     const isLoading = ref(false);
     const isError = ref(false);
+    const error = ref(null);
 
     const totalProducts = ref(0);
 
@@ -21,12 +22,32 @@ export const useProducts = () => {
             const { data } = await http.get(`/products?limit=${parPage}&skip=${skip}`);
             productList.value = data.products;
             totalProducts.value = data.total;
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            error.value = err;
             isError.value = true;
         }
         isLoading.value = false;
     };
 
-    return { productList, isLoading, fetchProducts, isError, totalProducts };
+    // product detail
+    const productDetail = ref({});
+
+    const fetchProductById = async id => {
+        if (!id) {
+            productDetail.value = {};
+            return;
+        }
+        isError.value = false;
+        isLoading.value = true;
+        try {
+            const { data } = await http.get(`/product/${id}`);
+            productDetail.value = data;
+        } catch (err) {
+            error.value = err;
+            isError.value = true;
+        }
+        isLoading.value = false;
+    };
+
+    return { productList, isLoading, fetchProducts, isError, totalProducts, fetchProductById, productDetail };
 };

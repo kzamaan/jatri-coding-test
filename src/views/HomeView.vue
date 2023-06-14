@@ -4,7 +4,12 @@
 
 <template>
     <!-- component -->
-    <div class="relative overflow-x-auto max-w-5xl mx-auto border my-4">
-        <product-list />
+    <div class="card max-w-5xl mx-auto border my-4">
+        <div class="card-header">
+            <h1 class="text-2xl font-bold text-gray-700 dark:text-white">Product List</h1>
+        </div>
+        <div class="card-body">
+            <product-list />
+        </div>
     </div>
 </template>

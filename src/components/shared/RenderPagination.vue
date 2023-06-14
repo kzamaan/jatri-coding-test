@@ -1,5 +1,5 @@
 <script setup>
-    import { computed, defineEmits, defineProps } from 'vue';
+    import { computed } from 'vue';
 
     // receive props from parent
     const props = defineProps({
@@ -10,6 +10,10 @@
         totalPage: {
             type: Number,
             required: true,
+        },
+        keepLength: {
+            type: Boolean,
+            default: false,
         },
     });
 
@@ -37,9 +41,9 @@
     // generate page number based on total page number
     const pageRange = computed(() => {
         const current = props.currentPage;
-        const size = props.totalPage > 5;
+        const size = props.keepLength;
         const last = props.totalPage;
-        const delta = 2;
+        const delta = 3;
         const left = current - delta;
         const right = current + delta;
         const leftPad = (delta + 2) * 2;
