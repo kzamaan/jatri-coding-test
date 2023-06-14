@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
+@layer components {
+    .btn {
+        @apply px-3 py-2 text-xs font-medium text-center text-white bg-sky-500 rounded-lg hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800;
+    }
+    .table-th {
+        @apply px-6 py-3 text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400;
+    }
+    .pagination-item {
+        @apply px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+    }
+    .previous-page {
+        @apply px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+    }
+    .current-page {
+        @apply px-3 py-2 text-sky-600 border border-gray-300 bg-sky-50 hover:bg-sky-100 hover:text-sky-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white
+    }
+    .next-page {
+        @apply px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+    }
+}
 @tailwind utilities;
