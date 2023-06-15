@@ -45,14 +45,17 @@
         router.push({ query: { page } });
     };
 
+    // update sort by price
     const updateSortByPrice = value => {
         sortByPrice.value = value;
     };
 
+    // update sort by rating
     const updateSortByRating = value => {
         sortByRating.value = value;
     };
 
+    // sort product list based on price and rating
     const sortedProductList = computed(() => {
         let products = [...productList.value];
         if (sortByPrice.value === 'asc' || sortByPrice.value === 'desc') {
