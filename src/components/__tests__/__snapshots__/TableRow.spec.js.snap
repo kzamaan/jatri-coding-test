@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TableRow > renders table row properly 1`] = `
+"<tr class=\\"bg-white border-b dark:bg-gray-800 dark:border-gray-700\\">
+  <th scope=\\"row\\" class=\\"px-6 py-4 border font-medium text-gray-900 whitespace-nowrap dark:text-white\\">1</th>
+  <td class=\\"px-6 py-4 border\\">iPhone 9</td>
+  <td class=\\"px-6 py-4 border\\">4.69</td>
+  <td class=\\"px-6 py-4 border text-right\\">549</td>
+  <td class=\\"px-6 py-4 border text-center\\"><button type=\\"button\\" class=\\"btn w-20\\">Show</button></td>
+</tr>
+<!--v-if-->"
+`;

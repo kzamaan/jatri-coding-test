@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductDetail > renders product detail properly 1`] = `
+"<tr data-v-8c663632=\\"\\">
+  <td data-v-8c663632=\\"\\" colspan=\\"5\\">
+    <!-- added slide down transition -->
+    <transition-stub data-v-8c663632=\\"\\" name=\\"slide-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+      <div data-v-8c663632=\\"\\" class=\\"card mb-2\\">
+        <div data-v-8c663632=\\"\\" class=\\"card-header\\">
+          <h3 data-v-8c663632=\\"\\" class=\\"text-xl font-semibold text-gray-900 dark:text-white text-center\\">Product Detail</h3>
+        </div>
+        <div data-v-8c663632=\\"\\" class=\\"card-body\\">
+          <table data-v-8c663632=\\"\\" class=\\"w-full\\">
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Name:</td>
+              <td data-v-8c663632=\\"\\">iPhone 9</td>
+            </tr>
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Price:</td>
+              <td data-v-8c663632=\\"\\">549</td>
+            </tr>
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Rating:</td>
+              <td data-v-8c663632=\\"\\">4.69</td>
+            </tr>
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Description:</td>
+              <td data-v-8c663632=\\"\\">An apple mobile which is nothing like apple</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </transition-stub>
+  </td>
+</tr>"
+`;
+
+exports[`ProductDetail > renders product properly 1`] = `
+"<tr data-v-8c663632=\\"\\">
+  <td data-v-8c663632=\\"\\" colspan=\\"5\\">
+    <!-- added slide down transition -->
+    <transition-stub data-v-8c663632=\\"\\" name=\\"slide-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+      <div data-v-8c663632=\\"\\" class=\\"card mb-2\\">
+        <div data-v-8c663632=\\"\\" class=\\"card-header\\">
+          <h3 data-v-8c663632=\\"\\" class=\\"text-xl font-semibold text-gray-900 dark:text-white text-center\\">Product Detail</h3>
+        </div>
+        <div data-v-8c663632=\\"\\" class=\\"card-body\\">
+          <table data-v-8c663632=\\"\\" class=\\"w-full\\">
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Name:</td>
+              <td data-v-8c663632=\\"\\">iPhone 9</td>
+            </tr>
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Price:</td>
+              <td data-v-8c663632=\\"\\">549</td>
+            </tr>
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Rating:</td>
+              <td data-v-8c663632=\\"\\">4.69</td>
+            </tr>
+            <tr data-v-8c663632=\\"\\">
+              <td data-v-8c663632=\\"\\" class=\\"font-bold\\">Product Description:</td>
+              <td data-v-8c663632=\\"\\">An apple mobile which is nothing like apple</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </transition-stub>
+  </td>
+</tr>"
+`;
