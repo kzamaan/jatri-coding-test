@@ -1,7 +1,7 @@
 <script setup>
+    import PrimaryButton from '@/components/PrimaryButton.vue';
     import { useProducts } from '@/composable/useProducts';
     import { ref, watch } from 'vue';
-    import PrimaryButton from './PrimaryButton.vue';
     import ProductDetail from './ProductDetail.vue';
 
     const { fetchProductById, productDetail, isLoading } = useProducts();
