@@ -39,23 +39,6 @@
                                 <td class="font-bold w-30">Description:</td>
                                 <td>{{ productDetail.description }}</td>
                             </tr>
-                            <tr>
-                                <td class="font-bold w-30">Brand:</td>
-                                <td>{{ productDetail.brand }}</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold w-30">Category:</td>
-                                <td>{{ productDetail.category }}</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold w-30">Image:</td>
-                                <td>
-                                    <img
-                                        :src="productDetail.thumbnail"
-                                        alt="product image"
-                                        class="w-20 h-20 object-cover" />
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </div>

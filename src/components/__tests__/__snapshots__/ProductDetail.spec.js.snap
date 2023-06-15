@@ -28,18 +28,6 @@ exports[`ProductDetail > renders product detail properly 1`] = `
               <td data-v-8c663632=\\"\\" class=\\"font-bold w-30\\">Description:</td>
               <td data-v-8c663632=\\"\\">An apple mobile which is nothing like apple</td>
             </tr>
-            <tr data-v-8c663632=\\"\\">
-              <td data-v-8c663632=\\"\\" class=\\"font-bold w-30\\">Brand:</td>
-              <td data-v-8c663632=\\"\\">Apple</td>
-            </tr>
-            <tr data-v-8c663632=\\"\\">
-              <td data-v-8c663632=\\"\\" class=\\"font-bold w-30\\">Category:</td>
-              <td data-v-8c663632=\\"\\">smartphones</td>
-            </tr>
-            <tr data-v-8c663632=\\"\\">
-              <td data-v-8c663632=\\"\\" class=\\"font-bold w-30\\">Image:</td>
-              <td data-v-8c663632=\\"\\"><img data-v-8c663632=\\"\\" src=\\"https://i.dummyjson.com/data/products/1/thumbnail.jpg\\" alt=\\"product image\\" class=\\"w-20 h-20 object-cover\\"></td>
-            </tr>
           </table>
         </div>
       </div>

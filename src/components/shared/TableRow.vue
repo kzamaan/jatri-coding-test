@@ -29,9 +29,7 @@
 
     const showProductDetail = () => {
         isShowDetail.value = !isShowDetail.value;
-        if (!isShowDetail.value) {
-            fetchProductById(null);
-        } else {
+        if (!productDetail.value.id) {
             fetchProductById(props.product.id);
         }
     };
