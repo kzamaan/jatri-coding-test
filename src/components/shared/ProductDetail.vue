@@ -16,7 +16,7 @@
         <td colspan="5">
             <div v-if="isLoading">Loading...</div>
             <!-- added slide down transition -->
-            <transition name="slide-fade">
+            <transition name="slide-down">
                 <div v-if="productDetail.id" class="card mb-2 rounded-xl">
                     <div class="card-header">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-center">Product Detail</h3>
@@ -68,17 +68,17 @@
   Enter and leave animations can use different
   durations and timing functions.
 */
-    .slide-fade-enter-active {
+    .slide-down-enter-active {
         transition: all 0.3s ease-out;
     }
 
-    .slide-fade-leave-active {
+    .slide-down-leave-active {
         transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
     }
 
-    .slide-fade-enter-from,
-    .slide-fade-leave-to {
-        transform: translateX(20px);
+    .slide-down-enter-from,
+    .slide-down-leave-to {
+        transform: translateY(-20px);
         opacity: 0;
     }
 </style>
