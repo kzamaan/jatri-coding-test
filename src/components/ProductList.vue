@@ -2,9 +2,12 @@
     import { useProducts } from '@/composable/useProducts';
     import { computed, ref, watch } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
+
+    // local components
     import ProductLoader from './shared/ProductLoader.vue';
+    import ProductSorting from './shared/ProductSorting.vue';
     import RenderPagination from './shared/RenderPagination.vue';
-    import SortOrder from './shared/SortOrder.vue';
+    import THead from './shared/THead.vue';
     import TableRow from './shared/TableRow.vue';
 
     // router and route
@@ -15,14 +18,15 @@
     const { productList, isLoading, fetchProducts, totalProducts } = useProducts();
 
     // pagination par page and current page
-    const parPage = ref(20);
+    const parPage = ref(5);
     const page = !isNaN(route.query.page) ? Number(route.query.page) : 1;
     const currentPage = ref(page);
     // skipped items for pagination
     const skipped = computed(() => (currentPage.value - 1) * parPage.value);
 
     // sort order
-    const sortOrder = ref('asc');
+    const sortByPrice = ref(null);
+    const sortByRating = ref(null);
 
     // fetch data on mounted
     fetchProducts(skipped.value, parPage.value);
@@ -40,31 +44,43 @@
         currentPage.value = page;
         router.push({ query: { page } });
     };
+
+    const updateSortByPrice = value => {
+        sortByPrice.value = value;
+    };
+
+    const updateSortByRating = value => {
+        sortByRating.value = value;
+    };
+
     const sortedProductList = computed(() => {
-        const products = [...productList.value];
-        return products.sort((a, b) => {
-            if (sortOrder.value === 'asc') {
-                return a.price - b.price;
-            } else {
-                return b.price - a.price;
-            }
-        });
+        let products = [...productList.value];
+        if (sortByPrice.value === 'asc' || sortByPrice.value === 'desc') {
+            products = products.sort((a, b) => {
+                if (sortByPrice.value === 'asc') {
+                    return a.price - b.price;
+                } else {
+                    return b.price - a.price;
+                }
+            });
+        }
+        if (sortByRating.value === 'asc' || sortByRating.value === 'desc') {
+            products = products.sort((a, b) => {
+                if (sortByRating.value === 'asc') {
+                    return a.rating - b.rating;
+                } else {
+                    return b.rating - a.rating;
+                }
+            });
+        }
+        return products;
     });
 </script>
 
 <template>
-    <SortOrder @update:sort="value => (sortOrder = value)" />
+    <product-sorting @update:sort-by-price="updateSortByPrice" @update:sort-by-rating="updateSortByRating" />
     <table class="relative w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs uppercase">
-            <tr>
-                <th scope="col" class="sticky top-0 table-th w-5">SL</th>
-                <th scope="col" class="sticky top-0 table-th">Name</th>
-                <th scope="col" class="sticky top-0 table-th">Rating</th>
-                <th scope="col" class="sticky top-0 table-th text-right">Price</th>
-                <th scope="col" class="sticky top-0 table-th text-center">Action</th>
-            </tr>
-        </thead>
-
+        <t-head />
         <tbody>
             <template v-if="isLoading">
                 <tr>
@@ -83,7 +99,10 @@
             </template>
         </tbody>
     </table>
-    <div class="flex justify-center pt-4">
-        <render-pagination :total-page="totalPage" :current-page="currentPage" @update-page="updatePageItem" />
-    </div>
+
+    <render-pagination
+        :total-page="totalPage"
+        :current-page="currentPage"
+        @update:page="updatePageItem"
+        class="flex justify-center pt-4" />
 </template>

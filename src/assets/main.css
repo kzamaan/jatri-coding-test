@@ -11,7 +11,7 @@
         @apply p-4;
     }
     .btn {
-        @apply px-3 py-2 text-xs font-medium text-center text-white bg-orange-500 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800;
+        @apply px-3 py-2 text-xs font-medium text-center text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-0 focus:outline-none dark:bg-orange-600 dark:hover:bg-orange-700 ;
     }
     .table-th {
         @apply px-6 py-3 text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400;

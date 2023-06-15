@@ -29,7 +29,7 @@
 
     const showProductDetail = () => {
         isShowDetail.value = !isShowDetail.value;
-        if (isShowDetail.value) {
+        if (!isShowDetail.value) {
             fetchProductById(null);
         } else {
             fetchProductById(props.product.id);
@@ -39,15 +39,15 @@
 
 <template>
     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <th scope="row" class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap dark:text-white">
             {{ skipped + (iteration + 1) }}
         </th>
-        <td class="px-6 py-4">{{ product.title }}</td>
-        <td class="px-6 py-4">{{ product.rating }}</td>
-        <td class="px-6 py-4 text-right">{{ product.price }}</td>
-        <td class="px-6 py-4 text-center">
-            <PrimaryButton @click="showProductDetail">
-                {{ isShowDetail ? 'Hide' : 'Show' }}
+        <td class="px-6 py-4 border">{{ product.title }}</td>
+        <td class="px-6 py-4 border">{{ product.rating }}</td>
+        <td class="px-6 py-4 border text-right">{{ Math.round(product.price).toLocaleString() }}</td>
+        <td class="px-6 py-4 border text-center">
+            <PrimaryButton @click="showProductDetail" class="w-20">
+                {{ isLoading ? 'Loading...' : isShowDetail ? 'Close' : 'Show' }}
             </PrimaryButton>
         </td>
     </tr>

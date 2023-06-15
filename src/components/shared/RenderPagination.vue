@@ -18,17 +18,17 @@
     });
 
     // emit event to parent
-    const emit = defineEmits(['update-page']);
+    const emit = defineEmits(['update:page']);
 
     // update page number
     const updatePage = page => {
-        emit('update-page', page);
+        emit('update:page', page);
     };
 
     // go to previous page
     const previousPage = () => {
         const page = props.currentPage - 1;
-        emit('update-page', page);
+        emit('update:page', page);
     };
     // go to next page
     const nextPage = () => {
@@ -36,7 +36,7 @@
             return;
         }
         const page = props.currentPage + 1;
-        emit('update-page', page);
+        emit('update:page', page);
     };
     // generate page number based on total page number
     const pageRange = computed(() => {
@@ -88,7 +88,7 @@
 </script>
 
 <template>
-    <nav aria-label="Page navigation example">
+    <nav v-if="totalPage > 1" aria-label="Page navigation example">
         <ul class="inline-flex -space-x-px">
             <li>
                 <button type="button" class="previous-page" :disabled="currentPage == 1" @click="previousPage">
