@@ -1,7 +1,7 @@
 <script setup>
     import PrimaryButton from '@/components/PrimaryButton.vue';
     import { useProducts } from '@/composable/useProducts';
-    import { ref, watch } from 'vue';
+    import { ref } from 'vue';
     import ErrorMessage from './ErrorMessage.vue';
     import ProductDetail from './ProductDetail.vue';
 
@@ -20,10 +20,6 @@
             type: Number,
             default: 0,
         },
-    });
-
-    watch(productDetail, value => {
-        console.log('Product detail', value);
     });
 
     const isShowDetail = ref(false);
