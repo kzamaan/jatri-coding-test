@@ -47,34 +47,31 @@
 
     // update sort by price
     const updateSortByPrice = value => {
+        sortByRating.value = null;
         sortByPrice.value = value;
     };
 
     // update sort by rating
     const updateSortByRating = value => {
+        sortByPrice.value = null;
         sortByRating.value = value;
     };
 
     // sort product list based on price and rating
     const sortedProductList = computed(() => {
         let products = [...productList.value];
-        if (sortByPrice.value === 'asc' || sortByPrice.value === 'desc') {
-            products = products.sort((a, b) => {
-                if (sortByPrice.value === 'asc') {
-                    return a.price - b.price;
-                } else {
-                    return b.price - a.price;
-                }
-            });
+        const sortFunc = (value, column) => (a, b) => {
+            if (value === 'asc') {
+                return a[column] - b[column];
+            } else {
+                return b[column] - a[column];
+            }
+        };
+        if (sortByPrice.value) {
+            products = products.sort(sortFunc(sortByPrice.value, 'price'));
         }
-        if (sortByRating.value === 'asc' || sortByRating.value === 'desc') {
-            products = products.sort((a, b) => {
-                if (sortByRating.value === 'asc') {
-                    return a.rating - b.rating;
-                } else {
-                    return b.rating - a.rating;
-                }
-            });
+        if (sortByRating.value) {
+            products = products.sort(sortFunc(sortByRating.value, 'rating'));
         }
         return products;
     });

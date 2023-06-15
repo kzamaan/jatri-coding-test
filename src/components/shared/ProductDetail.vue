@@ -23,19 +23,19 @@
                     <div class="card-body">
                         <table class="w-full">
                             <tr>
-                                <td>Product Name:</td>
+                                <td class="font-bold">Product Name:</td>
                                 <td>{{ productDetail.title }}</td>
                             </tr>
                             <tr>
-                                <td>Product Price:</td>
+                                <td class="font-bold">Product Price:</td>
                                 <td>{{ productDetail.price }}</td>
                             </tr>
                             <tr>
-                                <td>Product Rating:</td>
+                                <td class="font-bold">Product Rating:</td>
                                 <td>{{ productDetail.rating }}</td>
                             </tr>
                             <tr>
-                                <td>Product Description:</td>
+                                <td class="font-bold">Product Description:</td>
                                 <td>{{ productDetail.description }}</td>
                             </tr>
                         </table>
