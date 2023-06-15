@@ -18,15 +18,19 @@ export const useProducts = () => {
     const fetchProducts = async (skip = 0, parPage = 5) => {
         isError.value = false;
         isLoading.value = true;
+        error.value = null;
         try {
             const { data } = await http.get(`/products?limit=${parPage}&skip=${skip}`);
-            productList.value = data.products;
+            productList.value = data.products || [];
             totalProducts.value = data.total;
         } catch (err) {
-            error.value = err;
+            productList.value = [];
+            error.value = err.message;
             isError.value = true;
+            console.error(err);
+        } finally {
+            isLoading.value = false;
         }
-        isLoading.value = false;
     };
 
     // product detail
@@ -39,15 +43,17 @@ export const useProducts = () => {
         }
         isError.value = false;
         isLoading.value = true;
+        error.value = null;
         try {
             const { data } = await http.get(`/product/${id}`);
             productDetail.value = data;
         } catch (err) {
-            error.value = err;
+            error.value = err.message;
             isError.value = true;
+        } finally {
+            isLoading.value = false;
         }
-        isLoading.value = false;
     };
 
-    return { productList, isLoading, fetchProducts, isError, totalProducts, fetchProductById, productDetail };
+    return { productList, isLoading, fetchProducts, isError, totalProducts, fetchProductById, productDetail, error };
 };

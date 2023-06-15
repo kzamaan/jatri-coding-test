@@ -2,9 +2,10 @@
     import PrimaryButton from '@/components/PrimaryButton.vue';
     import { useProducts } from '@/composable/useProducts';
     import { ref, watch } from 'vue';
+    import ErrorMessage from './ErrorMessage.vue';
     import ProductDetail from './ProductDetail.vue';
 
-    const { fetchProductById, productDetail, isLoading } = useProducts();
+    const { fetchProductById, productDetail, isLoading, error } = useProducts();
 
     const props = defineProps({
         product: {
@@ -51,5 +52,6 @@
     </tr>
     <template v-if="isShowDetail">
         <ProductDetail :product-detail="productDetail" :is-loading="isLoading" />
+        <error-message :errorMessage="error" />
     </template>
 </template>

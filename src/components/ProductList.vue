@@ -4,6 +4,7 @@
     import { useRoute, useRouter } from 'vue-router';
 
     // local components
+    import ErrorMessage from './shared/ErrorMessage.vue';
     import ProductLoader from './shared/ProductLoader.vue';
     import ProductSorting from './shared/ProductSorting.vue';
     import RenderPagination from './shared/RenderPagination.vue';
@@ -15,7 +16,7 @@
     const route = useRoute();
 
     // useProducts composable function
-    const { productList, isLoading, fetchProducts, totalProducts } = useProducts();
+    const { productList, isLoading, fetchProducts, totalProducts, error } = useProducts();
 
     // pagination par page and current page
     const parPage = ref(5);
@@ -82,13 +83,7 @@
     <table class="relative w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <t-head />
         <tbody>
-            <template v-if="isLoading">
-                <tr>
-                    <td colspan="5">
-                        <product-loader />
-                    </td>
-                </tr>
-            </template>
+            <product-loader v-if="isLoading" />
             <template v-else>
                 <table-row
                     v-for="(product, index) in sortedProductList"
@@ -97,6 +92,7 @@
                     :skipped="skipped"
                     :product="product" />
             </template>
+            <error-message :errorMessage="error" />
         </tbody>
     </table>
 
